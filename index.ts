@@ -1,6 +1,6 @@
 import { Express } from 'express';
 
-import { playlistController } from './player/controllers/playlist.controller';
+import { playerRouter } from './player/routers/player.router';
 
 const express = require('express');
 const cors = require('cors');
@@ -10,9 +10,7 @@ const port: number = 3000;
 
 app.use(cors());
 
-app.get('/key', playlistController.getPlaylist);
-
-app.get('/media', playlistController.getMedia);
+app.use('/', playerRouter)
 
 app.listen(port, () => {
   console.log(`App is listening on server http://localhost:${ port }`);
