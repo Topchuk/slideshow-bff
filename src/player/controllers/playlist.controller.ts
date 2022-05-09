@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { DEFAULT_SCREEN_KEY } from '../configs/player.configs';
 import { playerService } from '../services/player.service';
 
-const proxy = require('express-http-proxy');
 
 export class PlaylistController {
   async getPlaylist(req: Request, res: Response) {
@@ -15,12 +14,8 @@ export class PlaylistController {
     }
   }
 
-  getMedia() {
-    return proxy('test.onsignage.com', {
-      proxyReqPathResolver: function (req: Request) {
-        return '/PlayerBackend/creative/get/' + req.query[ 'mediaKey' ];
-      }
-    })
+  getMedia(req: Request) {
+    return '/PlayerBackend/creative/get/' + req.query[ 'mediaKey' ];
   }
 }
 

@@ -2,9 +2,11 @@
   "name": "slideshow-bff",
   "version": "1.0.0",
   "description": "This is bff for slideshow angular application",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "node dist/index.js",
+    "start-dev": "nodemon src/index.ts",
+    "postinstall": "node_modules/.bin/tsc"
   },
   "author": "Oleh Topchak",
   "license": "ISC",
@@ -16,6 +18,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express-http-proxy": "^1.6.3"
   }
 }
